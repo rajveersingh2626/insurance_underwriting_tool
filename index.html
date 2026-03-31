@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quote Generation Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#0A2540",
+            accent: "#5469D4",
+            canvas: "#F5F8FF"
+          },
+          fontFamily: {
+            sans: ["Inter", "Roboto", "ui-sans-serif", "system-ui", "sans-serif"]
+          },
+          boxShadow: {
+            panel: "0 18px 45px rgba(10, 37, 64, 0.08)",
+            field: "0 10px 24px rgba(10, 37, 64, 0.08)"
+          },
+          borderRadius: {
+            xl: "8px"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body class="min-h-screen bg-canvas font-sans text-slate-900">
+  <div class="relative overflow-hidden">
+    <div class="absolute inset-x-0 top-0 h-72 bg-gradient-to-br from-navy via-[#123B69] to-accent"></div>
+    <div class="absolute -left-16 top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
+    <div class="absolute right-0 top-10 h-80 w-80 rounded-full bg-accent/30 blur-3xl"></div>
+
+    <main class="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <section class="rounded-[24px] border border-white/60 bg-white/90 p-6 shadow-panel backdrop-blur sm:p-8 lg:p-10">
+        <header class="mb-8 flex flex-col gap-6 border-b border-slate-200 pb-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="text-sm font-medium uppercase tracking-[0.24em] text-accent">Insurance Brokerage Underwriting Tool</p>
+            <h1 class="mt-2 text-3xl font-semibold tracking-tight text-navy sm:text-4xl">Quote Generation Portal</h1>
+          </div>
+          <div class="max-w-md rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-600 shadow-sm">
+            <p class="font-semibold text-navy">CAPITAL INSURANCE BROKERS PVT. LTD.</p>
+            <p>706, 7TH FLOOR , B-09-ITL-TWIN-TOWER, NETAJI SUBHASH PLACE, RING ROAD, PITAMPUTRA,</p>
+            <p>NEW DELHI 110034, 011-45631850, EMAIL: - contact@capitalinsurance.co.in</p>
+          </div>
+        </header>
+
+        <form id="quoteForm" class="space-y-8">
+          <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
+            <div class="mb-5">
+              <h2 class="text-xl font-semibold text-navy">Section 1: Client Identity</h2>
+              <p class="mt-1 text-sm text-slate-500">Core legal and address information for the insured entity.</p>
+            </div>
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Entity Name</span>
+                <input name="entityName" type="text" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10" placeholder="Enter legal entity name" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-700">GST Number</span>
+                <input name="gstNumber" type="text" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm uppercase outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10" placeholder="07AAAAA0000A1Z5" />
+              </label>
+              <label class="block md:col-span-2">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Full Business Address</span>
+                <textarea name="businessAddress" rows="4" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10" placeholder="Enter complete correspondence and risk address"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
+            <div class="mb-5">
+              <h2 class="text-xl font-semibold text-navy">Section 2: Risk Profile</h2>
+              <p class="mt-1 text-sm text-slate-500">Detailed operational context for underwriting classification and review.</p>
+            </div>
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="block md:col-span-2">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Business Occupation</span>
+                <span class="mb-2 block text-xs text-slate-500">Describe your activity in detail for AI classification.</span>
+                <textarea name="businessOccupation" rows="5" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10" placeholder="Describe products, processes, storage, utilities, and key operational risks"></textarea>
+              </label>
+              <label class="block md:max-w-sm">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Construction Type</span>
+                <select name="constructionType" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10">
+                  <option value="">Select construction type</option>
+                  <option value="Pucca (First Class)">Pucca (First Class)</option>
+                  <option value="Kutcha">Kutcha</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
+            <div class="mb-5">
+              <h2 class="text-xl font-semibold text-navy">Section 3: Coverage Details</h2>
+              <p class="mt-1 text-sm text-slate-500">Declare values to be considered for sum insured assessment.</p>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Building Value</span>
+                <input name="buildingValue" type="number" min="0" step="0.01" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10" placeholder="0.00" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Plant &amp; Machinery</span>
+                <input name="plantMachinery" type="number" min="0" step="0.01" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10" placeholder="0.00" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Furniture &amp; Fixtures</span>
+                <input name="furnitureFixtures" type="number" min="0" step="0.01" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10" placeholder="0.00" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Total Stock Value</span>
+                <input name="totalStockValue" type="number" min="0" step="0.01" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10" placeholder="0.00" />
+              </label>
+            </div>
+          </section>
+
+          <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
+            <div class="mb-5">
+              <h2 class="text-xl font-semibold text-navy">Section 4: Underwriting Variables</h2>
+              <p class="mt-1 text-sm text-slate-500">Past loss experience and physical risk mitigation details.</p>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-[minmax(0,320px)_1fr]">
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Claim Experience</span>
+                <select name="claimExperience" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10">
+                  <option value="">Select claim experience</option>
+                  <option value="No Claims (Last 3 years)">No Claims (Last 3 years)</option>
+                  <option value="Claims < 5%">Claims &lt; 5%</option>
+                  <option value="Claims 5-10%">Claims 5-10%</option>
+                  <option value="Claims 10-20%">Claims 10-20%</option>
+                  <option value="Claims > 20%">Claims &gt; 20%</option>
+                </select>
+              </label>
+
+              <fieldset>
+                <legend class="mb-2 text-sm font-medium text-slate-700">Fire Protection</legend>
+                <p class="mb-4 text-sm text-slate-500">Select all installed fire protection measures.</p>
+                <div class="grid gap-3 sm:grid-cols-3">
+                  <label class="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 transition hover:border-accent/40 hover:bg-white">
+                    <input name="fireProtection" value="Sprinklers" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-accent focus:ring-accent" />
+                    <span class="text-sm text-slate-700">Sprinklers</span>
+                  </label>
+                  <label class="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 transition hover:border-accent/40 hover:bg-white">
+                    <input name="fireProtection" value="Hydrants" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-accent focus:ring-accent" />
+                    <span class="text-sm text-slate-700">Hydrants</span>
+                  </label>
+                  <label class="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 transition hover:border-accent/40 hover:bg-white">
+                    <input name="fireProtection" value="Hand Appliances" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-accent focus:ring-accent" />
+                    <span class="text-sm text-slate-700">Hand Appliances</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+          </section>
+
+          <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
+            <div class="mb-5">
+              <h2 class="text-xl font-semibold text-navy">Section 5: Exclusions</h2>
+              <p class="mt-1 text-sm text-slate-500">Choose optional exclusions to be applied during quote generation.</p>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <label class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
+                <div>
+                  <span class="block text-sm font-medium text-slate-700">Exclude STFI?</span>
+                  <span class="text-xs text-slate-500">Storm, Tempest, Flood and Inundation</span>
+                </div>
+                <span class="relative inline-flex cursor-pointer items-center">
+                  <input id="excludeSTFI" name="excludeSTFI" type="checkbox" class="peer sr-only" />
+                  <span class="h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-accent"></span>
+                  <span class="absolute left-1 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
+                </span>
+              </label>
+
+              <label class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
+                <div>
+                  <span class="block text-sm font-medium text-slate-700">Exclude RSMTD/Terrorism?</span>
+                  <span class="text-xs text-slate-500">Riot, Strike, Malicious and Terrorism Damage</span>
+                </div>
+                <span class="relative inline-flex cursor-pointer items-center">
+                  <input id="excludeRSMTD" name="excludeRSMTDTerrorism" type="checkbox" class="peer sr-only" />
+                  <span class="h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-accent"></span>
+                  <span class="absolute left-1 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
+                </span>
+              </label>
+            </div>
+          </section>
+
+          <div class="flex flex-col gap-4 border-t border-slate-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <div id="statusMessage" class="hidden items-center gap-3 rounded-xl bg-accent/10 px-4 py-3 text-sm font-medium text-accent">
+              <svg class="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+              </svg>
+              <span id="statusText">Processing Quote...</span>
+            </div>
+
+            <button id="submitButton" type="submit" class="inline-flex items-center justify-center rounded-xl bg-navy px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-navy/20 transition hover:-translate-y-0.5 hover:bg-[#123B69] focus:outline-none focus:ring-4 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-70">
+              Generate Professional Quote
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const form = document.getElementById("quoteForm");
+    const statusMessage = document.getElementById("statusMessage");
+    const statusText = document.getElementById("statusText");
+    const submitButton = document.getElementById("submitButton");
+
+    function setLoadingState(isLoading, message) {
+      statusMessage.classList.toggle("hidden", !isLoading);
+      statusMessage.classList.toggle("flex", isLoading);
+      submitButton.disabled = isLoading;
+      statusText.textContent = message;
+      submitButton.textContent = isLoading ? "Submitting..." : "Generate Professional Quote";
+    }
+
+    async function submitQuoteForm(event) {
+      event.preventDefault();
+      setLoadingState(true, "Processing Quote...");
+
+      const fireProtection = Array.from(
+        form.querySelectorAll('input[name="fireProtection"]:checked')
+      ).map((input) => input.value);
+
+      const payload = {
+        clientIdentity: {
+          entityName: form.entityName.value.trim(),
+          gstNumber: form.gstNumber.value.trim(),
+          businessAddress: form.businessAddress.value.trim()
+        },
+        riskProfile: {
+          businessOccupation: form.businessOccupation.value.trim(),
+          constructionType: form.constructionType.value
+        },
+        coverageDetails: {
+          buildingValue: Number(form.buildingValue.value),
+          plantMachinery: Number(form.plantMachinery.value),
+          furnitureFixtures: Number(form.furnitureFixtures.value),
+          totalStockValue: Number(form.totalStockValue.value)
+        },
+        underwritingVariables: {
+          claimExperience: form.claimExperience.value,
+          fireProtection
+        },
+        exclusions: {
+          excludeSTFI: form.excludeSTFI.checked,
+          excludeRSMTDTerrorism: form.excludeRSMTDTerrorism.checked
+        },
+        submittedAt: new Date().toISOString()
+      };
+
+      try {
+        const response = await fetch("https://your-n8n-webhook-url.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error("Webhook request failed");
+        }
+
+        setLoadingState(true, "Quote request submitted successfully.");
+        form.reset();
+
+        window.setTimeout(() => {
+          statusMessage.classList.remove("flex");
+          statusMessage.classList.add("hidden");
+          submitButton.textContent = "Generate Professional Quote";
+          submitButton.disabled = false;
+        }, 2200);
+      } catch (error) {
+        console.error("Quote submission error:", error);
+        setLoadingState(false, "Generate Professional Quote");
+        statusMessage.classList.remove("hidden");
+        statusMessage.classList.add("flex");
+        statusText.textContent = "Unable to submit quote. Please verify the webhook URL and try again.";
+      }
+    }
+
+    form.addEventListener("submit", submitQuoteForm);
+  </script>
+</body>
+</html>
