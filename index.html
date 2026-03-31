@@ -58,8 +58,8 @@
         <form id="quoteForm" class="space-y-8">
           <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
             <div class="mb-5">
-              <h2 class="text-xl font-semibold text-navy">Section 1: Client Identity</h2>
-              <p class="mt-1 text-sm text-slate-500">Core legal and address information for the insured entity.</p>
+              <h2 class="text-xl font-semibold text-navy">Step 1: Entity Details</h2>
+              <p class="mt-1 text-sm text-slate-500">Core legal and location details for the insured entity, including address data used for EQ zoning.</p>
             </div>
             <div class="grid gap-5 md:grid-cols-2">
               <label class="block">
@@ -79,8 +79,8 @@
 
           <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
             <div class="mb-5">
-              <h2 class="text-xl font-semibold text-navy">Section 2: Risk Profile</h2>
-              <p class="mt-1 text-sm text-slate-500">Detailed operational context for underwriting classification and review.</p>
+              <h2 class="text-xl font-semibold text-navy">Step 2: Occupancy</h2>
+              <p class="mt-1 text-sm text-slate-500">Operational description and construction quality used for underwriting classification.</p>
             </div>
             <div class="grid gap-5 md:grid-cols-2">
               <label class="block md:col-span-2">
@@ -101,8 +101,8 @@
 
           <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
             <div class="mb-5">
-              <h2 class="text-xl font-semibold text-navy">Section 3: Coverage Details</h2>
-              <p class="mt-1 text-sm text-slate-500">Declare values to be considered for sum insured assessment.</p>
+              <h2 class="text-xl font-semibold text-navy">Step 3: Valuation</h2>
+              <p class="mt-1 text-sm text-slate-500">Declare sum insured values for major asset categories at risk.</p>
             </div>
             <div class="grid gap-5 sm:grid-cols-2">
               <label class="block">
@@ -126,12 +126,12 @@
 
           <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
             <div class="mb-5">
-              <h2 class="text-xl font-semibold text-navy">Section 4: Underwriting Variables</h2>
-              <p class="mt-1 text-sm text-slate-500">Past loss experience and physical risk mitigation details.</p>
+              <h2 class="text-xl font-semibold text-navy">Step 4: Risk Profile</h2>
+              <p class="mt-1 text-sm text-slate-500">Capture safety systems, past claims experience, and deductible expectations.</p>
             </div>
-            <div class="grid gap-6 lg:grid-cols-[minmax(0,320px)_1fr]">
+            <div class="grid gap-6 lg:grid-cols-3">
               <label class="block">
-                <span class="mb-2 block text-sm font-medium text-slate-700">Claim Experience</span>
+                <span class="mb-2 block text-sm font-medium text-slate-700">Past Claims %</span>
                 <select name="claimExperience" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10">
                   <option value="">Select claim experience</option>
                   <option value="No Claims (Last 3 years)">No Claims (Last 3 years)</option>
@@ -142,7 +142,19 @@
                 </select>
               </label>
 
-              <fieldset>
+              <label class="block">
+                <span class="mb-2 block text-sm font-medium text-slate-700">Deductibles</span>
+                <select name="deductible" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-accent focus:bg-white focus:ring-4 focus:ring-accent/10">
+                  <option value="">Select deductible</option>
+                  <option value="Standard Policy Deductible">Standard Policy Deductible</option>
+                  <option value="0.25% of Claim Amount">0.25% of Claim Amount</option>
+                  <option value="0.50% of Claim Amount">0.50% of Claim Amount</option>
+                  <option value="1.00% of Claim Amount">1.00% of Claim Amount</option>
+                  <option value="Higher Deductible Preferred">Higher Deductible Preferred</option>
+                </select>
+              </label>
+
+              <fieldset class="lg:col-span-1">
                 <legend class="mb-2 text-sm font-medium text-slate-700">Fire Protection</legend>
                 <p class="mb-4 text-sm text-slate-500">Select all installed fire protection measures.</p>
                 <div class="grid gap-3 sm:grid-cols-3">
@@ -165,17 +177,17 @@
 
           <section class="rounded-xl border border-slate-200 bg-white p-6 shadow-field">
             <div class="mb-5">
-              <h2 class="text-xl font-semibold text-navy">Section 5: Exclusions</h2>
-              <p class="mt-1 text-sm text-slate-500">Choose optional exclusions to be applied during quote generation.</p>
+              <h2 class="text-xl font-semibold text-navy">Step 5: Coverage</h2>
+              <p class="mt-1 text-sm text-slate-500">Select add-on covers to include in the quote structure.</p>
             </div>
-            <div class="grid gap-4 sm:grid-cols-2">
+            <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               <label class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
                 <div>
-                  <span class="block text-sm font-medium text-slate-700">Exclude STFI?</span>
-                  <span class="text-xs text-slate-500">Storm, Tempest, Flood and Inundation</span>
+                  <span class="block text-sm font-medium text-slate-700">Include EQ?</span>
+                  <span class="text-xs text-slate-500">Earthquake coverage add-on</span>
                 </div>
                 <span class="relative inline-flex cursor-pointer items-center">
-                  <input id="excludeSTFI" name="excludeSTFI" type="checkbox" class="peer sr-only" />
+                  <input id="includeEQ" name="includeEQ" type="checkbox" class="peer sr-only" />
                   <span class="h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-accent"></span>
                   <span class="absolute left-1 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
                 </span>
@@ -183,11 +195,35 @@
 
               <label class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
                 <div>
-                  <span class="block text-sm font-medium text-slate-700">Exclude RSMTD/Terrorism?</span>
-                  <span class="text-xs text-slate-500">Riot, Strike, Malicious and Terrorism Damage</span>
+                  <span class="block text-sm font-medium text-slate-700">Include STFI?</span>
+                  <span class="text-xs text-slate-500">Storm, Tempest, Flood and Inundation</span>
                 </div>
                 <span class="relative inline-flex cursor-pointer items-center">
-                  <input id="excludeRSMTD" name="excludeRSMTDTerrorism" type="checkbox" class="peer sr-only" />
+                  <input id="includeSTFI" name="includeSTFI" type="checkbox" class="peer sr-only" />
+                  <span class="h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-accent"></span>
+                  <span class="absolute left-1 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
+                </span>
+              </label>
+
+              <label class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
+                <div>
+                  <span class="block text-sm font-medium text-slate-700">Include Debris Removal?</span>
+                  <span class="text-xs text-slate-500">Additional debris clearance coverage</span>
+                </div>
+                <span class="relative inline-flex cursor-pointer items-center">
+                  <input id="includeDebrisRemoval" name="includeDebrisRemoval" type="checkbox" class="peer sr-only" />
+                  <span class="h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-accent"></span>
+                  <span class="absolute left-1 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
+                </span>
+              </label>
+
+              <label class="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-4">
+                <div>
+                  <span class="block text-sm font-medium text-slate-700">Include Terrorism?</span>
+                  <span class="text-xs text-slate-500">Terrorism risk extension</span>
+                </div>
+                <span class="relative inline-flex cursor-pointer items-center">
+                  <input id="includeTerrorism" name="includeTerrorism" type="checkbox" class="peer sr-only" />
                   <span class="h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-accent"></span>
                   <span class="absolute left-1 h-5 w-5 rounded-full bg-white shadow transition peer-checked:translate-x-5"></span>
                 </span>
@@ -231,36 +267,18 @@
       event.preventDefault();
       setLoadingState(true, "Processing Quote...");
 
-      const fireProtection = Array.from(
-        form.querySelectorAll('input[name="fireProtection"]:checked')
-      ).map((input) => input.value);
-
-      const payload = {
-        clientIdentity: {
-          entityName: form.entityName.value.trim(),
-          gstNumber: form.gstNumber.value.trim(),
-          businessAddress: form.businessAddress.value.trim()
-        },
-        riskProfile: {
-          businessOccupation: form.businessOccupation.value.trim(),
-          constructionType: form.constructionType.value
-        },
-        coverageDetails: {
-          buildingValue: Number(form.buildingValue.value),
-          plantMachinery: Number(form.plantMachinery.value),
-          furnitureFixtures: Number(form.furnitureFixtures.value),
-          totalStockValue: Number(form.totalStockValue.value)
-        },
-        underwritingVariables: {
-          claimExperience: form.claimExperience.value,
-          fireProtection
-        },
-        exclusions: {
-          excludeSTFI: form.excludeSTFI.checked,
-          excludeRSMTDTerrorism: form.excludeRSMTDTerrorism.checked
-        },
-        submittedAt: new Date().toISOString()
-      };
+      const formData = new FormData(event.target);
+      const payload = Object.fromEntries(formData.entries());
+      payload.fireProtection = formData.getAll("fireProtection");
+      payload.includeEQ = form.includeEQ.checked;
+      payload.includeSTFI = form.includeSTFI.checked;
+      payload.includeDebrisRemoval = form.includeDebrisRemoval.checked;
+      payload.includeTerrorism = form.includeTerrorism.checked;
+      payload.buildingValue = Number(payload.buildingValue || 0);
+      payload.plantMachinery = Number(payload.plantMachinery || 0);
+      payload.furnitureFixtures = Number(payload.furnitureFixtures || 0);
+      payload.totalStockValue = Number(payload.totalStockValue || 0);
+      payload.submittedAt = new Date().toISOString();
 
       try {
         const response = await fetch("https://raj256.app.n8n.cloud/webhook-test/qoute-request", {
